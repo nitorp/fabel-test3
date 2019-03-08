@@ -1,0 +1,60 @@
+<div style="margin-left: 20%">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="link">
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td mat-cell *matCellDef="let element"> <a mat-raised-button routerLink="/bestilling/0"
+        routerLinkActive="active">Edit</a></td>
+  </ng-container>
+
+  <ng-container matColumnDef="opprettetDato">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Opprettet dato </th>
+    <td mat-cell *matCellDef="let element"> {{element.opprettetDato.toLocaleDateString()}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="iktlosning">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ikt løsning </th>
+    <td mat-cell *matCellDef="let element"> {{element.iktlosning}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="beskrivelse">
+    <th mat-header-cell *matHeaderCellDef> Beskrivelse </th>
+    <td mat-cell *matCellDef="let element"> {{element.beskrivelse}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="pobref">
+    <th mat-header-cell *matHeaderCellDef> Pobref </th>
+    <td mat-cell *matCellDef="let element"> {{element.pobref}} </td>
+  </ng-container>
+  !-- Symbol Column -->
+  <ng-container matColumnDef="kontaktperson">
+    <th mat-header-cell *matHeaderCellDef> Kontakt person </th>
+    <td mat-cell *matCellDef="let element"> {{element.kontaktperson}} </td>
+  </ng-container>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="miljo">
+    <th mat-header-cell *matHeaderCellDef> Miljø </th>
+    <td mat-cell *matCellDef="let element"> {{element.miljo}} </td>
+  </ng-container>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="sikkerhetsniva">
+    <th mat-header-cell *matHeaderCellDef> Sikkerhetsnivå </th>
+    <td mat-cell *matCellDef="let element"> {{element.sikkerhetsniva}} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,0 +1,47 @@
+<div style="margin-left: 35%">
+<mat-form-field>
+  <mat-select (selectionChange)="iktlosningChanged($event.value)" [(value)]="selected" placeholder="Velg iktløsning" required>
+    <mat-option>--</mat-option>
+    <mat-option *ngFor="let iktlosning of _iktlosninger" [value]="iktlosning">
+      {{iktlosning}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <ng-container matColumnDef="eksponeringid">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Eksponeringsid </th>
+    <td mat-cell *matCellDef="let element"> {{element.eksponeringid}} </td>
+  </ng-container>
+  <ng-container matColumnDef="e_host">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Eksponert hostnavn</th>
+    <td mat-cell *matCellDef="let element"> {{element.e_host}} </td>
+  </ng-container>
+  <ng-container matColumnDef="e_port">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Eksponert port </th>
+    <td mat-cell *matCellDef="let element"> {{element.e_port}} </td>
+  </ng-container>
+  <ng-container matColumnDef="e_uri">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Eksponert uri </th>
+    <td mat-cell *matCellDef="let element"> {{element.e_uri}} </td>
+  </ng-container>
+  <ng-container matColumnDef="rp_uri">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Reverse proxy uri </th>
+    <td mat-cell *matCellDef="let element"> {{element.rp_uri}} </td>
+  </ng-container>
+  <ng-container matColumnDef="lb_host">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Lastbalansert host </th>
+    <td mat-cell *matCellDef="let element"> {{element.lb_host}} </td>
+  </ng-container>
+  <ng-container matColumnDef="lb_port">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Lastbalansert port </th>
+    <td mat-cell *matCellDef="let element"> {{element.lb_port}} </td>
+  </ng-container>
+  <ng-container matColumnDef="meldingsstr">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Meldings størrelse </th>
+    <td mat-cell *matCellDef="let element"> {{element.meldingsstr}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
