@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     margin: 8px;
-    padding: 8px;
+    padding: 0px;
     border-radius: 8px;
   }
   
@@ -21,6 +21,10 @@
   .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;
   }
+
+  .mat-raised-button ~ .mat-raised-button {
+    margin-left: 8px;
+  }
  
   .bestilling-form {
     min-width: 150px;
@@ -33,18 +37,17 @@
   }
 
   .brannmurItem {
-    display: flex;
     justify-content: center;
-    margin: 8px;
-    padding: 8px;
-    border-radius: 8px;
-    border: gray;
-    
     border-style: solid;
     width: 100%;
+    border-radius: 8px;
   }
 
   .brannmurItem:hover
   {
     background: lightgray;
+  }
+
+  .pull-right {
+    float: right;
   }

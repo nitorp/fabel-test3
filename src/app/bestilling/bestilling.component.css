@@ -1,0 +1,6 @@
+.floating {
+    float: left;
+    position: absolute;
+    left: 500px;
+    top: 20px;
+}

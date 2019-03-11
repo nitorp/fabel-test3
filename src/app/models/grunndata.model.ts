@@ -12,7 +12,7 @@ export class GrunnData {
     public static interaksjoner: string[] = ["Interaktiv", "Tjenestekall", "Begge"];
     public static authentiseringsstyrke: string[] = ["Ingen", "Enfaktor", "SVV Single Signon", "Tofaktor"];
 
-    public static iktlosninger: string[] = ['Atlas', 'Mime 360', 'Fabel', 'Autosys felles', 'Autosys trafikant', 'Autosys kjøretøy', 'Bestill og betal', 'POB', 'Tomcat', 'Weblogic', 'Oracle', 'Vegvær', 'Vegkart'];
+    public static iktlosninger: string[] = ['Gisline', 'Atlas', 'Mime 360', 'Fabel', 'Autosys felles', 'Autosys trafikant', 'Autosys kjøretøy', 'Bestill og betal', 'POB', 'Tomcat', 'Weblogic', 'Oracle', 'Vegvær', 'Vegkart'];
     public static lbhoster: string[] = ['lbhost1', 'lbhost2', 'lbhost3', 'lbhost4', 'lbhost5', 'lbhost6', 'lbhost7', 'lbhost8', 'lbhost9', 'lbhost10'];
     public static eksponertehoster: string[] = ['eksphost1', 'eksphost2', 'eksphost3', 'eksphost4', 'eksphost5', 'eksphost6', 'eksphost7', 'eksphost8', 'eksphost9', 'eksphost10'];
 

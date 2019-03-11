@@ -1,8 +1,9 @@
+<div class="floating">
 <mat-radio-group name="radioOpt1" [(ngModel)]="_role" (change)="radioChange()">
-    <mat-radio-button value="les">Les</mat-radio-button>
-    <mat-radio-button value="bestiller">Bestiller</mat-radio-button>
-    <mat-radio-button checked="true" value="drift">Drift</mat-radio-button>
+    <mat-radio-button value="bestiller" checked="true">Bestiller</mat-radio-button>
+    <mat-radio-button value="drift">Drift</mat-radio-button>
   </mat-radio-group>
+</div>
 <mat-tab-group dynamicHeight>
   <mat-tab label="Generelt">
       <app-generelt></app-generelt>

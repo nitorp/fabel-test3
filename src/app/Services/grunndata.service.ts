@@ -6,11 +6,8 @@ import { Observable, from, of } from 'rxjs';
   providedIn: 'root'
 })
 export class GrunndataService {
-
   constructor() { }
   GetIktLosninger(): Observable<string[]> {
-
-    
     return of(GrunnData.iktlosninger);
   }
 }

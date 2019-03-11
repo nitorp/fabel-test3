@@ -23,8 +23,6 @@ export class BestillingService {
   }
 
   getAlleBestillinger(numberOfRows: number, pagenumber: number ): Observable<Bestilling[]> {
-
-    
     return of(this._bestillinger);
   }
 

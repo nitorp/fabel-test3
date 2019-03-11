@@ -9,24 +9,25 @@
       <div *ngIf="formVisible" class="bestilling-form">
         <form [formGroup]="brannmurForm">
           <div class="centercontrol">
-            <mat-radio-group formControlName="operasjon">
+            <mat-radio-group formControlName="operasjon" matTooltip="Angir om brannmurregel skal opprettes eller fjernes.">
               <mat-radio-button value="apne">Åpne</mat-radio-button>
               <mat-radio-button value="lukke">Lukke</mat-radio-button>
             </mat-radio-group>
           </div>
           <h3 class="h3">Fra</h3>
           <mat-form-field class="full-width">
-            <input matInput id="frahost" formControlName="frahost" placeholder="Hostnavn / Gruppe / IP /">
+            <input matTooltip="Angi hostnavn / IP-adresse / navn på nett eller brannmurgruppe som trafikken skal sendes fra."
+            matInput id="frahost" formControlName="frahost" placeholder="Hostnavn / Gruppe / IP /">
           </mat-form-field>
           <mat-form-field class="full-width" appearance="fill" *ngIf="role==='drift'">
-            <input matInput id="fraport" formControlName="fraport" placeholder="Port(er)" >
+            <input matInput matTooltip="Benyttes kun i spesielle tilfeller hvor sourceport må være kjent på forhånd." id="fraport" formControlName="fraport" placeholder="Port(er)" >
           </mat-form-field>
           <h3 class="h3">Til</h3>
           <mat-form-field class="full-width">
-            <input matInput id="tilhost" formControlName="tilhost" placeholder="Hostnavn / Gruppe / IP /">
+            <input matInput matTooltip="Angi hostnavn / IP-adresse / navn på nett eller brannmurgruppe som trafikken skal sendes til." id="tilhost" formControlName="tilhost" placeholder="Hostnavn / Gruppe / IP /">
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input matInput id="tilport" formControlName="tilport" placeholder="Port(er)">
+            <input matInput matTooltip="Angi ett eller flere portnummer, eller en portrange. Eksempler: '2468' / '2468, 3579' / '2468, 3579-3599.'" id="tilport" formControlName="tilport" placeholder="Port(er)">
           </mat-form-field>
           <mat-form-field class="full-width">
             <textarea id="beskrivelse" formControlName="beskrivelse" matInput rows="6"
@@ -54,8 +55,8 @@
       <mat-list *ngIf="brannmurApninger.length > 0" style="width: 100%">
         <mat-list-item *ngFor="let brannmur of brannmurApninger;let i = index">
           <div class="brannmurItem" (click)="brannmurClick(i)">
-          --- {{i}} -- {{brannmur.fraHost}} -> {{brannmur.tilHost}}:{{brannmur.tilPort}}
-          <button type="button" mat-raised-button color="primary" (click)="slett(i)">Fjern</button>
+            {{brannmur.operasjon}} || {{brannmur.fraHost}} -> {{brannmur.tilHost}}:{{brannmur.tilPort}}
+          <button class="pull-right" type="button" mat-raised-button color="primary" (click)="slett(i)">Fjern</button>
           </div>
         </mat-list-item>
       </mat-list>
