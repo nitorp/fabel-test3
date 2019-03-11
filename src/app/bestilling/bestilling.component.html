@@ -1,23 +1,19 @@
-
-
-<mat-tab-group>
-  <mat-tab label="One">
-    <form [formGroup]="profileForm">
-  
-      <label>
-        First Name:
-        <input type="text" formControlName="firstName">
-      </label>
-    
-      <label>
-        Last Name:
-        <input type="text" formControlName="lastName">
-      </label>
-    
-    </form>    
+<mat-radio-group name="radioOpt1" [(ngModel)]="_role" (change)="radioChange()">
+    <mat-radio-button value="les">Les</mat-radio-button>
+    <mat-radio-button value="bestiller">Bestiller</mat-radio-button>
+    <mat-radio-button checked="true" value="drift">Drift</mat-radio-button>
+  </mat-radio-group>
+<mat-tab-group dynamicHeight>
+  <mat-tab label="Generelt">
+      <app-generelt></app-generelt>
   </mat-tab>
-  <mat-tab label="Two">
-    <h1>Some more tab content</h1>
-    <p>...</p>
+  <mat-tab label="Eksponeringer">
+      <!--<app-eksponering></app-eksponering>-->
+  </mat-tab>
+  <mat-tab label="Lastbalanseringer">
+     <!--<app-lastbalansering></app-lastbalansering>-->
+  </mat-tab>
+  <mat-tab label="Brannmursåpninger">
+      <app-brannmur></app-brannmur>
   </mat-tab>
 </mat-tab-group>

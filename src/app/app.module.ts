@@ -20,8 +20,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material' ;
 import { MatSelectModule} from '@angular/material' 
-import {MatTabsModule} from '@angular/material/tabs';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { GenereltComponent } from './generelt/generelt.component';
+import { BrannmurComponent } from './brannmur/brannmur.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +33,12 @@ import {MatTabsModule} from '@angular/material/tabs';
     MinebestillingerComponent,
     AktivekonfigurasjonerComponent,
     BestillingComponent,
-    FinnerikkesidenComponent
+    FinnerikkesidenComponent,
+    GenereltComponent,
+    BrannmurComponent
   ],
   imports: [
+    MatTooltipModule,
     FormsModule,
     MatRadioModule,
     MatTabsModule,
@@ -50,6 +56,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatButtonModule,
     MatToolbarModule,
     MatSelectModule,
+    FlexLayoutModule,
     BrowserAnimationsModule
   ],
   providers: [BestillingService, EksponeringService, GrunndataService],

@@ -1,6 +1,6 @@
 <div style="margin-left: 35%">
 <mat-form-field>
-  <mat-select (selectionChange)="iktlosningChanged($event.value)" [(value)]="selected" placeholder="Velg iktløsning" required>
+  <mat-select matTooltip="Her testes det ut tooltip" (selectionChange)="iktlosningChanged($event.value)" [(value)]="selected" placeholder="Velg iktløsning" required>
     <mat-option>--</mat-option>
     <mat-option *ngFor="let iktlosning of _iktlosninger" [value]="iktlosning">
       {{iktlosning}}

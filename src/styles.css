@@ -1,2 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+.venstre-box, .hoyre-box {
+    display: flex;
+    justify-content: center;
+    margin: 8px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  
+  .centercontrol {
+    display: flex;
+    justify-content: center;
+    margin: 16px;
+  }
+  
+  .h3 {
+   margin:0px;
+  }
+
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+ 
+  .bestilling-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+
+  .brannmurItem {
+    display: flex;
+    justify-content: center;
+    margin: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    border: gray;
+    
+    border-style: solid;
+    width: 100%;
+  }
+
+  .brannmurItem:hover
+  {
+    background: lightgray;
+  }
