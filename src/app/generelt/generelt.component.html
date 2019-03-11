@@ -1,0 +1,44 @@
+<div>
+  <div fxLayout='row'>
+    <div fxLayout='row' fxFlex="66%" class="venstre-box mat-elevation-z4">
+      <form [formGroup]="genereltForm"  class="bestilling-form">
+        <mat-form-field class="full-width">
+          <mat-select id="iktlosning" formControlName="iktlosning"  placeholder="Ikt løsning"  name="iktlosning">
+            <mat-option  value="fabel">Fabel</mat-option>
+            <mat-option  value="autosys">Autosys</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput id="pobref" formControlName="pobref"  placeholder="POB referanse" value="">
+        </mat-form-field>
+        <mat-form-field  class="full-width">
+          <input matInput id="kontakt" formControlName="kontakt" placeholder="Arkitekt/teknisk kontakt" value="">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-select id="miljo" formControlName="miljo"  placeholder="Miljø"  name="miljo">
+            <mat-option  value="stm">STM</mat-option>
+            <mat-option  value="atm">ATM</mat-option>
+            <mat-option  value="prod">PROD</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-select id="sikkerhetsniva" formControlName="sikkerhetsniva"  placeholder="Sikkerhetsnivå "  name="sikkerhetsniva">
+            <mat-option  value="sn-1">SN-1</mat-option>
+            <mat-option  value="sn-2">SN-2</mat-option>
+            <mat-option  value="sn-3">SN-3</mat-option>
+            <mat-option  value="sn-4">SN-4</mat-option>
+          </mat-select>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <textarea id="beskrivelse" formControlName="beskrivelse"  matInput rows="6" placeholder="Beskrivelse"></textarea>
+        </mat-form-field>
+      </form>
+
+    </div>
+    <div fxFlex="34%" class="hoyre-box mat-elevation-z4">
+      
+    </div>
+  </div>
+</div>
+

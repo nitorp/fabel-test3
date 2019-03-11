@@ -1,0 +1,64 @@
+<div>
+  <div fxLayout='row'>
+    <div fxLayout='row' fxFlex="66%" class="venstre-box mat-elevation-z4">
+      <div *ngIf="!formVisible" class="bestilling-form">
+        <div class="centercontrol">
+          <button mat-raised-button color="primary" (click)="leggTil()">Legg til brannmursåpning</button>
+        </div>
+      </div>
+      <div *ngIf="formVisible" class="bestilling-form">
+        <form [formGroup]="brannmurForm">
+          <div class="centercontrol">
+            <mat-radio-group formControlName="operasjon">
+              <mat-radio-button value="apne">Åpne</mat-radio-button>
+              <mat-radio-button value="lukke">Lukke</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <h3 class="h3">Fra</h3>
+          <mat-form-field class="full-width">
+            <input matInput id="frahost" formControlName="frahost" placeholder="Hostnavn / Gruppe / IP /">
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="fill" *ngIf="role==='drift'">
+            <input matInput id="fraport" formControlName="fraport" placeholder="Port(er)" >
+          </mat-form-field>
+          <h3 class="h3">Til</h3>
+          <mat-form-field class="full-width">
+            <input matInput id="tilhost" formControlName="tilhost" placeholder="Hostnavn / Gruppe / IP /">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput id="tilport" formControlName="tilport" placeholder="Port(er)">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <textarea id="beskrivelse" formControlName="beskrivelse" matInput rows="6"
+              placeholder="Beskrivelse"></textarea>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-select id="transportprotokoll" formControlName="transportprotokoll" placeholder="Transportprotokoll"
+              name="transportprotokoll">
+              <mat-option value="tcp">TCP</mat-option>
+              <mat-option value="http">HTTP</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="fill" *ngIf="role==='drift'">
+            <textarea id="merknader" formControlName="merknader" matInput rows="6" placeholder="Merknader"></textarea>
+          </mat-form-field>
+          <div class="centercontrol">
+            <button type="button" mat-raised-button color="primary" (click)="onLagre()">Lagre</button>
+            <button type="button" mat-raised-button color="primary" (click)="onAvbryt()">Avbryt</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div fxFlex="34%" class="hoyre-box mat-elevation-z4">
+      <div *ngIf="brannmurApninger.length == 0">Ingen brannmursåpninger </div>
+      <mat-list *ngIf="brannmurApninger.length > 0" style="width: 100%">
+        <mat-list-item *ngFor="let brannmur of brannmurApninger;let i = index">
+          <div class="brannmurItem" (click)="brannmurClick(i)">
+          --- {{i}} -- {{brannmur.fraHost}} -> {{brannmur.tilHost}}:{{brannmur.tilPort}}
+          <button type="button" mat-raised-button color="primary" (click)="slett(i)">Fjern</button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>
