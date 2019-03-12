@@ -25,6 +25,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { GenereltComponent } from './generelt/generelt.component';
 import { BrannmurComponent } from './brannmur/brannmur.component';
+import { LastbalanseringComponent } from './lastbalansering/lastbalansering.component';
+import { EksponeringComponent } from './eksponering/eksponering.component';
+
 
 @NgModule({
   declarations: [
@@ -35,10 +38,13 @@ import { BrannmurComponent } from './brannmur/brannmur.component';
     BestillingComponent,
     FinnerikkesidenComponent,
     GenereltComponent,
-    BrannmurComponent
+    BrannmurComponent,
+    LastbalanseringComponent,
+    EksponeringComponent
   ],
   imports: [
     MatTooltipModule,
+    MatMenuModule,
     FormsModule,
     MatRadioModule,
     MatTabsModule,

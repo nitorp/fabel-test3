@@ -6,6 +6,7 @@
     margin: 8px;
     padding: 0px;
     border-radius: 8px;
+    min-height: 200px;
   }
   
   .centercontrol {
@@ -37,10 +38,12 @@
   }
 
   .brannmurItem {
-    justify-content: center;
     border-style: solid;
-    width: 100%;
+    width: calc(100% - 72px);
+    padding: 16px;
     border-radius: 8px;
+    margin: 16px;
+    vertical-align: middle; 
   }
 
   .brannmurItem:hover

@@ -32,7 +32,7 @@ function createEksponering(bestillingId: number): Eksponering {
          lb_host: GrunnData.lbhoster[Math.floor(Math.random() * 10)], 
          lb_port: (Math.floor(Math.random() * 5000)+10000).toString(),
          lb_uri: '/lastbalansert/'+ iktlosn.toLowerCase().trim().replace(' ','') ,
-         meldingsstr: '',
+         meldingsstr: Math.floor(Math.random() * 10000).toLocaleString(),
          klientsertref: '',
          serversertref: '',
          merknad_1: '',

@@ -75,6 +75,8 @@ export class BrannmurComponent implements OnInit, OnDestroy {
 
   slett(index: number): void {
     this.brannmurApninger.splice(index, 1);
+    this.nullstillForm();
+    this.formVisible = false;
   }
 
   mapValuesFromForm() {

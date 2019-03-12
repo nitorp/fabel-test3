@@ -1,15 +1,45 @@
 <div style="margin-left: 35%">
-<mat-form-field>
-  <mat-select matTooltip="Her testes det ut tooltip" (selectionChange)="iktlosningChanged($event.value)" [(value)]="selected" placeholder="Velg iktløsning" required>
-    <mat-option>--</mat-option>
-    <mat-option *ngFor="let iktlosning of _iktlosninger" [value]="iktlosning">
-      {{iktlosning}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<button type="button" (click)="sjekkdata()">Sjekk data</button>
+  <mat-form-field>
+    <mat-select matTooltip="Velg en ikt løsning for å vise aktiv konfigurasjon." (selectionChange)="iktlosningChanged($event.value)"
+      [(value)]="selected" placeholder="Velg iktløsning" required>
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let iktlosning of _iktlosninger" [value]="iktlosning">
+        {{iktlosning}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
-
+<div style="display: flex; justify-content:space-between; margin-left: 16px;margin-right: 16px;margin-bottom: 0px">
+    <div class="mat-h2">Eksponeringer</div>
+    <div><button mat-button [matMenuTriggerFor]="menu" mat-raised-button color="primary"> Kolonner </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-checkbox [(ngModel)]="vis_eksponeringid" (change)="handleCheckbox()">Eksponeringsid</mat-checkbox>
+        </button>
+        <button mat-menu-item>
+          <mat-checkbox [(ngModel)]="vis_e_host" (change)="handleCheckbox()">Eksponert hostnavn</mat-checkbox>
+        </button>
+        <button mat-menu-item>
+          <mat-checkbox [(ngModel)]="vis_e_port" (change)="handleCheckbox()">Eksponert port</mat-checkbox>
+        </button>
+        <button mat-menu-item>
+          <mat-checkbox [(ngModel)]="vis_e_uri" (change)="handleCheckbox()">Eksponert uri</mat-checkbox>
+        </button>
+        <button mat-menu-item>
+          <mat-checkbox [(ngModel)]="vis_rp_uri" (change)="handleCheckbox()">Reverse proxy uri</mat-checkbox>
+        </button>
+        <button mat-menu-item>
+          <mat-checkbox [(ngModel)]="vis_lb_host" (change)="handleCheckbox()">Lastbalansert host</mat-checkbox>
+        </button>
+        <button mat-menu-item>
+          <mat-checkbox [(ngModel)]="vis_lb_port" (change)="handleCheckbox()">Lastbalansert port</mat-checkbox>
+        </button>
+        <button mat-menu-item>
+          <mat-checkbox [(ngModel)]="vis_meldingsstr" (change)="handleCheckbox()">Meldings størrelse</mat-checkbox>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="eksponeringid">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Eksponeringsid </th>
@@ -46,3 +76,5 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<br>
+<div style="margin:16px" class="mat-h2">Lastbalanseringer</div>
