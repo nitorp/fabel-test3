@@ -27,6 +27,7 @@ import { GenereltComponent } from './generelt/generelt.component';
 import { BrannmurComponent } from './brannmur/brannmur.component';
 import { LastbalanseringComponent } from './lastbalansering/lastbalansering.component';
 import { EksponeringComponent } from './eksponering/eksponering.component';
+import { Brannmur2Component } from './brannmur2/brannmur2.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { EksponeringComponent } from './eksponering/eksponering.component';
     GenereltComponent,
     BrannmurComponent,
     LastbalanseringComponent,
-    EksponeringComponent
+    EksponeringComponent,
+    Brannmur2Component
   ],
   imports: [
     MatTooltipModule,
