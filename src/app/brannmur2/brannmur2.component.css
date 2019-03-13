@@ -1,8 +1,22 @@
-.example-container {
-    height: 400px;
-    overflow: auto;
-  }
-  
   table {
     width: 100%;
+  }
+
+  .control-group {
+    background:#E8E8E8;
+    border-color: #C8C8C8;
+    border-style:solid;
+    border-width:1px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .brannmur-element {
+    padding:8px; 
+    
+    background: gray;
+  }
+
+  .brannmur-element:hover {
+    background:darkgray;
   }

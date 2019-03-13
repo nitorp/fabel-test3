@@ -1,7 +1,7 @@
+<div style="padding:8px; margin-top:8px; background: gray">
 <form [formGroup]="brannmurForm">
   <div fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px">
-
-    <div>
+    <div class="control-group">
       <mat-form-field style="width:100px">
         <mat-select formControlName="operasjon" placeholder="Operasjon" value="apne" name="operasjon">
           <mat-option value="apne">Åpne</mat-option>
@@ -9,49 +9,40 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div fxFlex fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px"
-      style="background:#F8F8F8;border-color: #E8E8E8; border-style:solid;border-width:1px;">
-      &nbsp;&nbsp; <h3>Fra:</h3>
+    <div fxFlex fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px" class="control-group">
+      <h3>Fra:</h3>
       <div fxFlex>
-
         <mat-form-field style="width:100%">
-          <input
-            matTooltip="Angi hostnavn / IP-adresse / navn på nett eller brannmurgruppe som trafikken skal sendes fra."
-            matInput formControlName="frahost" placeholder="Fra Hostnavn / Gruppe / IP /">
+          <input matInput formControlName="frahost" placeholder="Fra Hostnavn / Gruppe / IP /">
         </mat-form-field>
       </div>
-
       <div *ngIf="role==='drift'">
         <mat-form-field style="width:100px">
           <input matInput formControlName="fraport" placeholder="Fra Port(er)">
         </mat-form-field>
       </div>
-      &nbsp;&nbsp;
     </div>
-    <div fxFlex fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px"
-      style="background:#F8F8F8;border-color: #E8E8E8; border-style:solid;border-width:1px;">
-      &nbsp;&nbsp;<h3>Til:</h3>
+    <div fxFlex fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px" class="control-group">
+      <h3>Til:</h3>
       <div fxFlex>
         <mat-form-field style="width:100%">
           <input matInput formControlName="tilhost" placeholder="Til hostnavn / Gruppe / IP /">
         </mat-form-field>
       </div>
-
       <div>
         <mat-form-field style="width:100px">
           <input matInput formControlName="tilport" placeholder="Til port(er)">
         </mat-form-field>
       </div>
-      &nbsp;&nbsp;
     </div>
 
-    <div *ngIf="visAlle" fxFlex>
+    <div class="control-group" *ngIf="visAlle" fxFlex>
       <mat-form-field style="width:100%">
         <input matInput formControlName="beskrivelse" placeholder="Beskrivelse">
       </mat-form-field>
     </div>
 
-    <div *ngIf="visAlle">
+    <div class="control-group" *ngIf="visAlle">
       <mat-form-field style="width:150px">
         <mat-select formControlName="transportprotokoll" placeholder="Transportprotokoll" name="transportprotokoll">
           <mat-option value="tcp">TCP</mat-option>
@@ -60,19 +51,63 @@
       </mat-form-field>
     </div>
 
-    <div *ngIf="role==='drift'" fxFlex>
+    <div class="control-group" *ngIf="role==='drift'" fxFlex>
       <mat-form-field *ngIf="role==='drift'" style="width:100%">
         <input matInput formControlName="merknader" placeholder="Merknader">
       </mat-form-field>
     </div>
-    <div>
+    <div >
       <button type="button" mat-raised-button color="primary" (click)="onLeggtil()">Legg til</button>
-      <button type="button" mat-raised-button color="primary" (click)="onAvbryt()">Avbryt</button>
+      <button type="button" mat-raised-button color="primary" (click)="onAvbryt()">Reset</button>
     </div>
 
   </div>
 </form>
+</div>
 
+<div *ngFor="let brannmurApning of brannmurApninger" class="brannmur-element">
+    <div fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px">
+      <div class="control-group" >
+      <div fxFlex fxLayout='row' fxLayoutAlign="center center" style="width:100px;">{{brannmurApning.operasjon}}</div>  
+      </div>
+      <div fxFlex fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px" class="control-group">
+        
+        <div fxFlex>
+        
+        </div>
+  
+        <div *ngIf="role==='drift'">
+        
+        </div>
+      </div>
+      <div fxFlex fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px" class="control-group">
+        
+        <div fxFlex>
+        
+        </div>
+        <div>
+        
+        </div>
+      </div>
+  
+      <div class="control-group" *ngIf="visAlle" fxFlex>
+        
+      </div>
+  
+      <div class="control-group" *ngIf="visAlle">
+        
+      </div>
+  
+      <div class="control-group" *ngIf="role==='drift'" fxFlex>
+        
+      </div>
+      <div >
+        
+      </div>
+  
+    </div>
+  
+  </div>
 <div class="example-container mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
 

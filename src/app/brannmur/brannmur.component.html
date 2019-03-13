@@ -56,7 +56,7 @@
        <div style="font-size: 2em" class="brannmurItem" (click)="brannmurClick(i)" *ngFor="let brannmur of brannmurApninger;let i = index">
           <mat-icon *ngIf="brannmur.operasjon == 'apne'">lock_open</mat-icon>
           <mat-icon *ngIf="brannmur.operasjon == 'lukke'">lock</mat-icon>
-          {{brannmur.fraHost}} <mat-icon>arrow_forward</mat-icon> {{brannmur.tilHost}}:{{brannmur.tilPort}} 
+          {{brannmur.fraHost}} <mat-icon>question-mark-circle</mat-icon> {{brannmur.tilHost}}:{{brannmur.tilPort}} 
           <button class="pull-right" type="button" mat-raised-button color="primary" (click)="slett(i)" matTooltip="Fjerner denne brannmursåpningen fra bestillingen.">Fjern</button>
        </div>
       </div>
