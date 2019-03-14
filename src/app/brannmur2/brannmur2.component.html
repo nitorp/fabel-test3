@@ -1,6 +1,9 @@
+<div class="mat-caption" style="background: grey;color:white">
+<p>sadfasdf</p>
+</div>
 <div style="padding:8px; margin-top:8px; background: gray">
 <form [formGroup]="brannmurForm">
-  <div fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px">
+  <div fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="4px">
     <div class="control-group">
       <mat-form-field style="width:100px">
         <mat-select formControlName="operasjon" placeholder="Operasjon" value="apne" name="operasjon">
@@ -10,7 +13,6 @@
       </mat-form-field>
     </div>
     <div fxFlex fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px" class="control-group">
-      <h3>Fra:</h3>
       <div fxFlex>
         <mat-form-field style="width:100%">
           <input matInput formControlName="frahost" placeholder="Fra Hostnavn / Gruppe / IP /">
@@ -23,7 +25,6 @@
       </div>
     </div>
     <div fxFlex fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px" class="control-group">
-      <h3>Til:</h3>
       <div fxFlex>
         <mat-form-field style="width:100%">
           <input matInput formControlName="tilhost" placeholder="Til hostnavn / Gruppe / IP /">
@@ -56,7 +57,7 @@
         <input matInput formControlName="merknader" placeholder="Merknader">
       </mat-form-field>
     </div>
-    <div >
+    <div style="min-width: 160px;">
       <button type="button" mat-raised-button color="primary" (click)="onLeggtil()">Legg til</button>
       <button type="button" mat-raised-button color="primary" (click)="onAvbryt()">Reset</button>
     </div>
@@ -64,42 +65,45 @@
   </div>
 </form>
 </div>
-
+<br>
 <div *ngFor="let brannmurApning of brannmurApninger" class="brannmur-element">
     <div fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px">
-      <div class="control-group" >
-      <div fxFlex fxLayout='row' fxLayoutAlign="center center" style="width:100px;">{{brannmurApning.operasjon}}</div>  
+      <div style="padding-left: 8px; padding-right:8px">
+      <div fxFlex fxLayout='row' fxLayoutAlign="center center" style="width:100px;">
+        <img *ngIf="brannmurApning.operasjon === 'apne'" src="assets/leggtil.png">
+        <img *ngIf="brannmurApning.operasjon === 'lukke'" src="assets/fjern.png">
+      </div>  
       </div>
       <div fxFlex fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px" class="control-group">
         
-        <div fxFlex>
-        
+        <div class="mat-caption" fxFlex>
+          {{brannmurApning.fraHost}}
         </div>
   
-        <div *ngIf="role==='drift'">
-        
+        <div class="mat-caption"  *ngIf="role==='drift'">
+          {{brannmurApning.fraPort}}
         </div>
       </div>
       <div fxFlex fxLayout='row' fxLayoutAlign="center center" fxLayoutGap="8px" class="control-group">
         
-        <div fxFlex>
-        
+        <div class="mat-caption"  fxFlex>
+          {{brannmurApning.tilHost}}
         </div>
-        <div>
-        
+        <div class="mat-caption" >
+          {{brannmurApning.tilPort}}
         </div>
       </div>
   
-      <div class="control-group" *ngIf="visAlle" fxFlex>
-        
+      <div class="control-group mat-caption" *ngIf="visAlle" fxFlex>
+        {{brannmurApning.beskrivelse}} gasj hhsa hsda hsda hsdafo  hsdaoifh odahf hdsfioah hfos hdsoi fhfdsi ahf ohfdsoahf isd ofdh 
       </div>
   
-      <div class="control-group" *ngIf="visAlle">
-        
+      <div class="control-group mat-caption" *ngIf="visAlle">
+        {{brannmurApning.transportprotokoll}}
       </div>
   
-      <div class="control-group" *ngIf="role==='drift'" fxFlex>
-        
+      <div class="control-group mat-caption" *ngIf="role==='drift'" fxFlex>
+        {{brannmurApning.merknader}}
       </div>
       <div >
         
