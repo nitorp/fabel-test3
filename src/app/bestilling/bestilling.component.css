@@ -4,3 +4,18 @@
     left: 500px;
     top: 20px;
 }
+
+
+#wrapper{
+    
+    padding: 16px; 
+    min-height: calc(100% - 120px);
+    height: calc(100% - 120px); 
+    box-sizing: border-box;/*new*/
+  }
+  #tab-group{
+    height: 100%;
+  }
+  #tab-group mat-tab-body {
+    flex-grow: 1;
+  }

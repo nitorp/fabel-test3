@@ -28,7 +28,8 @@ import { BrannmurComponent } from './brannmur/brannmur.component';
 import { LastbalanseringComponent } from './lastbalansering/lastbalansering.component';
 import { EksponeringComponent } from './eksponering/eksponering.component';
 import { Brannmur2Component } from './brannmur2/brannmur2.component';
-
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+import { Brannmur3Component } from './brannmur3/brannmur3.component';
 
 @NgModule({
   declarations: [
@@ -42,9 +43,11 @@ import { Brannmur2Component } from './brannmur2/brannmur2.component';
     BrannmurComponent,
     LastbalanseringComponent,
     EksponeringComponent,
-    Brannmur2Component
+    Brannmur2Component,
+    Brannmur3Component
   ],
   imports: [
+    ScrollDispatchModule,
     MatTooltipModule,
     MatMenuModule,
     FormsModule,

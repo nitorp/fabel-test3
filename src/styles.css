@@ -54,3 +54,7 @@
   .pull-right {
     float: right;
   }
+
+  .mat-tab-body-wrapper{
+    flex-grow: 1;
+  }

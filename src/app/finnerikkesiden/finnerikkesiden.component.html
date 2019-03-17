@@ -1,3 +1,7 @@
-<p>
-  finnerikkesiden works!
-</p>
+<button type="button" mat-raised-button color="primary" (click)="onLeggtil()">Legg til</button>
+<div class="example-viewport">
+<cdk-virtual-scroll-viewport  itemSize="50" style="height:100%" >
+  <div *cdkVirtualFor="let item of items" class="example-item">{{item}}</div>
+</cdk-virtual-scroll-viewport>
+</div>
+

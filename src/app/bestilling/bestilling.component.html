@@ -4,9 +4,10 @@
     <mat-radio-button value="drift">Drift</mat-radio-button>
   </mat-radio-group>
 </div>
-<mat-tab-group dynamicHeight>
-  <mat-tab label="Brannmursåpninger">
-    <app-brannmur2></app-brannmur2>
+<div id="wrapper"> <!-- give it an id -->
+<mat-tab-group id="tab-group">
+  <mat-tab label="Brannmursåpninger" >
+    <app-brannmur3></app-brannmur3>
   </mat-tab>
   <mat-tab label="Generelt">
     <app-generelt></app-generelt>
@@ -20,8 +21,8 @@
   <mat-tab label="Brannmursåpninger">
     <app-brannmur></app-brannmur>
   </mat-tab>
-  
 </mat-tab-group>
+</div>
 
 <div class="centercontrol">
   <button type="button" mat-raised-button color="primary" >Lagre</button>
