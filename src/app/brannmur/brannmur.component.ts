@@ -27,8 +27,8 @@ export class BrannmurComponent implements OnInit, OnDestroy {
   }
 
   constructor(private messageService: MessageService) {
-    // subscribe to home component messages
-    this.subscription = this.messageService.getMessage().subscribe(message => {
+    
+    /*this.subscription = this.messageService.getMessage().subscribe(message => {
       if (message) {
         this._role = message.text;
 
@@ -38,7 +38,7 @@ export class BrannmurComponent implements OnInit, OnDestroy {
         // clear messages when empty message received
         this.messages = [];
       }
-    });
+    });*/
   }
 
 
@@ -64,7 +64,7 @@ export class BrannmurComponent implements OnInit, OnDestroy {
     this.formVisible = true;
     this.setValuesInForm(index);
     this.editItemIndex = index;
-    console.log(index);
+    
   }
 
   leggTil(): void {

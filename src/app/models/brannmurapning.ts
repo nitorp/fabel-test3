@@ -8,3 +8,4 @@ export class BrannmurApning {
     transportProtokoll:String;
     merknader:String;
 }
+

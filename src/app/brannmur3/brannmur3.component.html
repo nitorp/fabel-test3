@@ -1,36 +1,36 @@
 <div style="height:100%;display:flex; flex-direction: column">
-
-  <div>
-    <mat-checkbox style="margin:8px" [(ngModel)]="visHjelp">Vis hjelp</mat-checkbox>
-    <mat-checkbox style="margin:8px" (change)="oppdaterKolonner($event)">Vis alle felter</mat-checkbox>
-  </div>
-  <div *ngIf="visHjelp">dsafdsafdsa</div>
+    <div>
+        <mat-checkbox style="margin:8px" [(ngModel)]="visHjelp">Vis hjelp</mat-checkbox>
+        <mat-checkbox style="margin:8px" [(ngModel)]="visAlle" (change)="oppdaterKolonner($event)">Vis alle felter</mat-checkbox>
+        <mat-checkbox style="margin:8px" [(ngModel)]="isDrift" (change)="oppdaterKolonner($event)">Simuler driftsrolle</mat-checkbox>
+    </div>
+    <div *ngIf="visHjelp" style="text-align: center; height: 80px; font-size:60px;color: white; background: green">Hjelp</div>
+  
 
   <form [formGroup]="brannmurForm">
-    <table style="border-style: solid; border-width: 4px;border-color: black" mat-table [dataSource]="brannmurApninger" style="width:100%">
-
+    <table mat-table [dataSource]="brannmurApninger" style="width:100%">
       <ng-container matColumnDef="coloperasjon">
         <th *matHeaderCellDef style="width: 70px">
           <mat-form-field style="width: 70px">
-            <mat-select formControlName="operasjon" placeholder="Operasjon" value="apne" name="operasjon">
+            <mat-select  formControlName="operasjon" placeholder="Operasjon" value="apne" name="operasjon">
               <mat-option value="apne">Åpne</mat-option>
               <mat-option value="lukke">Lukke</mat-option>
             </mat-select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let element">
-          <img *ngIf="element.operasjon === 'apne'" src="assets/leggtil.png">
-          <img *ngIf="element.operasjon === 'lukke'" src="assets/fjern.png">
+        <td mat-cell *matCellDef="let element" >
+            <img *ngIf="element.operasjon === 'apne'" src="assets/leggtil.png">
+            <img *ngIf="element.operasjon === 'lukke'" src="assets/fjern.png">
         </td>
       </ng-container>
 
       <ng-container matColumnDef="colfrahost">
         <th *matHeaderCellDef >
-          <mat-form-field style="width:100%">
-            <input matInput formControlName="frahost" placeholder="Fra Hostnavn / Gruppe / IP /">
+          <mat-form-field  style="width:100%">
+            <input  matInput formControlName="frahost" placeholder="Fra Hostnavn / Gruppe / IP /">
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.fraHost}} </td>
+        <td mat-cell *matCellDef="let element"><div style="margin-left:8px">  {{element.fraHost}} </div> </td>
       </ng-container>
 
       <ng-container matColumnDef="colfraport">
@@ -39,7 +39,7 @@
             <input matInput formControlName="fraport" placeholder="Fra Port(er)">
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.fraPort}} </td>
+        <td mat-cell *matCellDef="let element"><div style="margin-left:8px">{{element.fraPort}}</div> </td>
       </ng-container>
 
       <ng-container matColumnDef="coltilhost">
@@ -48,7 +48,7 @@
             <input matInput formControlName="tilhost" placeholder="Til hostnavn / Gruppe / IP /">
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.tilHost}} </td>
+        <td mat-cell *matCellDef="let element"><div style="margin-left:8px"> {{element.tilHost}} </div></td>
       </ng-container>
 
       <ng-container matColumnDef="coltilport">
@@ -57,7 +57,7 @@
             <input matInput formControlName="tilport" placeholder="Til port(er)">
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.tilPort}} </td>
+        <td mat-cell *matCellDef="let element"><div style="margin-left:8px"> {{element.tilPort}}</div> </td>
       </ng-container>
 
       <ng-container matColumnDef="colbeskrivelse">
@@ -66,7 +66,7 @@
             <input matInput formControlName="beskrivelse" placeholder="Beskrivelse">
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.beskrivelse}} </td>
+        <td style="margin-left:8px"  mat-cell *matCellDef="let element"><div style="margin-left:8px">{{element.beskrivelse}}</div> </td>
       </ng-container>
 
       <ng-container matColumnDef="coltransportprotokoll">
@@ -78,7 +78,7 @@
             </mat-select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.transportProtokoll}} </td>
+        <td mat-cell *matCellDef="let element"><div style="margin-left:8px">{{element.transportProtokoll}}</div></td>
       </ng-container>
 
       <ng-container matColumnDef="colmerknader">
@@ -87,14 +87,19 @@
             <input matInput formControlName="merknader" placeholder="Merknader">
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.merknader}} </td>
+        <td mat-cell *matCellDef="let element"><div style="margin-left:8px"> {{element.merknader}} </div></td>
       </ng-container>
       <ng-container matColumnDef="colknapper">
-        <th *matHeaderCellDef style="width:150px">
-          <button type="button" mat-raised-button color="primary" (click)="onLeggtil()">Legg til</button>
+        <th *matHeaderCellDef style="width:170px">
+          <button type="button" mat-raised-button color="primary" (click)="onLeggtil()">Lagre</button>
           <button type="button" mat-raised-button color="primary" (click)="onAvbryt()">Reset</button>
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        <td mat-cell *matCellDef="let element;let i = index" > 
+          <div style="margin-left:22px">
+            <button type="button" mat-raised-button color="primary" (click)="onEndre(i)">Endre</button>
+            <button type="button" mat-raised-button color="primary" (click)="onSlett(i)">Slett</button>
+          </div>
+        </td>
       </ng-container>
 
       <tr style="background: lightgray;" mat-header-row *matHeaderRowDef="visteKolonner; sticky: true"></tr>

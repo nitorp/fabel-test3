@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { BrannmurApning } from '../models/brannmurapning';
 import { MatCheckboxChange } from '@angular/material';
+import { MessageService } from '../Services/message.service';
 
 @Component({
   selector: 'app-brannmur3',
@@ -16,12 +17,13 @@ export class Brannmur3Component implements OnInit {
   visEnkelKollonerVanlig = ['coloperasjon', 'colfrahost', 'coltilhost', 'coltilport','colknapper'];
   visEnkelKollonerDrift = ['coloperasjon', 'colfrahost', 'colfraport', 'coltilhost', 'coltilport', 'colmerknader','colknapper'];
   
-  rolle: string = "drift";
+  
   brannmurApninger: BrannmurApning[] = [];
   editItemIndex: number = -1;
   visHjelp :boolean = false;
   visAlle: boolean = false;
-  constructor() { this.sjekkKolonner(true); }
+  isDrift: boolean =false;
+  constructor(private messageService: MessageService) { this.sjekkKolonner(this.visAlle, this.isDrift); }
 
   mapValuesFromForm() {
     const bra: BrannmurApning = new BrannmurApning();
@@ -37,29 +39,71 @@ export class Brannmur3Component implements OnInit {
       this.brannmurApninger = this.brannmurApninger.concat(bra);
     } else {
       this.brannmurApninger.splice(this.editItemIndex, 1, bra);
+      const hack  = Object.assign([], this.brannmurApninger);
+      this.brannmurApninger = hack;
+      this.editItemIndex = -1;
     }
-    
+  }
+
+  onAvbryt(): void {
+    this.nullstillForm();
+    this.editItemIndex = -1;
   }
 
   oppdaterKolonner(e : MatCheckboxChange){
-      this.sjekkKolonner(e.checked);
+      this.sjekkKolonner(this.visAlle, this.isDrift);
   }
 
-  sjekkKolonner(alle :boolean){
+  sjekkKolonner(alle :boolean, isDrift: boolean){
+    
     if (alle){
-      if (this.rolle === "drift"){
+      if (isDrift){
         this.visteKolonner = this.visAlleKollonerDrift;
       }else{
         this.visteKolonner = this.visAlleKollonerVanlig;
       }
       
     }else{
-      if (this.rolle === "drift"){
+      if (isDrift){
         this.visteKolonner = this.visEnkelKollonerDrift;
       }else{
         this.visteKolonner = this.visEnkelKollonerVanlig;
       }
     }
+  }
+
+  setValuesInForm(index: number) {
+    this.brannmurForm.patchValue({
+      operasjon: this.brannmurApninger[index].operasjon,
+      frahost: this.brannmurApninger[index].fraHost,
+      fraport: this.brannmurApninger[index].fraPort,
+      tilhost: this.brannmurApninger[index].tilHost,
+      tilport: this.brannmurApninger[index].tilPort,
+      beskrivelse: this.brannmurApninger[index].beskrivelse,
+      transportprotokoll: this.brannmurApninger[index].transportProtokoll,
+      merknader: this.brannmurApninger[index].merknader
+    }
+    );
+  }
+
+  nullstillForm(): void {
+    this.brannmurForm.reset();
+    this.brannmurForm.patchValue({
+      operasjon: "apne"
+    });
+  }
+
+  onEndre(index: number): void {
+    this.setValuesInForm(index);
+    this.editItemIndex = index;
+  }
+
+  onSlett(index: number): void {
+    this.brannmurApninger.splice(index, 1);
+    const hack  = Object.assign([], this.brannmurApninger);
+    this.brannmurApninger = hack;
+    this.nullstillForm();
+    this.messageService.sendMessage(this.brannmurApninger.length.toString());
   }
 
   ngOnInit() {
@@ -76,26 +120,8 @@ export class Brannmur3Component implements OnInit {
   }
   onLeggtil(): void {
     this.mapValuesFromForm()
-    console.log(this.brannmurApninger);
+    this.nullstillForm();
+    this.messageService.sendMessage(this.brannmurApninger.length.toString());
   }
+  
 }
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
