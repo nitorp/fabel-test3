@@ -14,16 +14,12 @@ export class BestillingComponent implements OnInit {
   brannmurlabel : string = "Brannmursåpninger(0)";
   constructor(private _bestillingserviceService: BestillingService,private messageService: MessageService)  {
     this.subscription = this.messageService.getMessage().subscribe(message => {
-      console.log(message);
-      this.brannmurlabel = "Brannmursåpninger(" + message.text +")"
+    this.brannmurlabel = "Brannmursåpninger(" + message.text +")"
     });
-
   }
 
   ngOnInit() {
   
   }
-  radioChange() {
-    
-  }
+  
 }
