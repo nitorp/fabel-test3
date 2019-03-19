@@ -27,7 +27,7 @@
       <ng-container matColumnDef="colfrahost">
         <th *matHeaderCellDef >
           <mat-form-field  style="width:100%">
-            <input  matInput formControlName="frahost" placeholder="Fra Hostnavn / Gruppe / IP /">
+            <input  matInput formControlName="frahost" placeholder="Fra Hostnavn / Gruppe / IP">
           </mat-form-field>
         </th>
         <td mat-cell *matCellDef="let element"><div style="margin-left:8px">  {{element.fraHost}} </div> </td>
@@ -45,7 +45,7 @@
       <ng-container matColumnDef="coltilhost">
         <th *matHeaderCellDef>
           <mat-form-field style="width: 100%">
-            <input matInput formControlName="tilhost" placeholder="Til hostnavn / Gruppe / IP /">
+            <input matInput formControlName="tilhost" placeholder="Til hostnavn / Gruppe / IP">
           </mat-form-field>
         </th>
         <td mat-cell *matCellDef="let element"><div style="margin-left:8px"> {{element.tilHost}} </div></td>
